@@ -64,12 +64,13 @@ app.get("/get-customers", async (req, res) => {
 app.get("/get-customer/:id", async (req, res) => {
   try {
     const customer = await User.findById(req.params.id);
-    if (!customer) return res.status(404).json({ message: "Customer not found" });
+    if (!customer)
+      return res.status(404).json({ message: "Customer not found" });
     res.json(customer);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
-})
+});
 
 app.put("/update-customer/:id", async (req, res) => {
   try {
